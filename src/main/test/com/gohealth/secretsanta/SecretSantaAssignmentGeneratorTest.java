@@ -13,6 +13,7 @@ public class SecretSantaAssignmentGeneratorTest {
 	private SecretSantaAssignmentGenerator assignmentGenerator = new SecretSantaAssignmentGenerator();
 	
 	private final String[] participants = new String[] { "Kyle", "Kenny", "Eric", "Stan", "Stewie", "Brian" };
+	private final String[] oddParticipants = new String[] { "Kyle", "Kenny", "Eric", "Stan", "Stewie" };
 	
 	@Test
 	public void testGenerateAssignmentsParticipantsNotNull() {
@@ -39,13 +40,19 @@ public class SecretSantaAssignmentGeneratorTest {
 		testGenerateAssignments(participants);
 	}
 	
-	@Test
-	public void testGenerateAssignmentsForPermutations() {
-		String[][] permutation = PermutationUtil.permutation(participants);
+	private void testGenerateAssignmentsForPermutations(String[] theParticipants) {
+		String[][] permutation = PermutationUtil.permutation(theParticipants);
 		
 		for(int i = 0; i < permutation.length; i++) {
 			testGenerateAssignments(permutation[i]);
 		}
+	}
+	
+	@Test
+	public void testGenerateAssignmentsForPermutations() {
+		testGenerateAssignmentsForPermutations(participants);
+		
+		testGenerateAssignmentsForPermutations(oddParticipants);
 	}
 	
 	private void testGenerateAssignments(String[] participants) {
