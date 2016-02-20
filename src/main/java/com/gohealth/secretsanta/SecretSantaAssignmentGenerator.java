@@ -20,6 +20,10 @@ public class SecretSantaAssignmentGenerator {
 
 	 */
 	public String[] generateAssignments(final String[] participants) {
+		if(participants == null) {
+			throw new IllegalArgumentException("Particpants array was null");
+		}
+		
 		Set<Integer> toBeAssignedIndexes = new HashSet<Integer>();
 		for(int i = 0;  i < participants.length; i++) {
 			toBeAssignedIndexes.add(i);

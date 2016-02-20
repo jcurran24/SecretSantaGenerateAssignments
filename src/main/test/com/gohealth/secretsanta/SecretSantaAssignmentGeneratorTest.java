@@ -4,8 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Assert;
-
 import org.junit.Test;
+
+import com.gohealth.secretsanta.util.PermutationUtil;
 
 public class SecretSantaAssignmentGeneratorTest {
 
@@ -14,10 +15,15 @@ public class SecretSantaAssignmentGeneratorTest {
 	private final String[] participants = new String[] { "Kyle", "Kenny", "Eric", "Stan", "Stewie", "Brian" };
 	
 	@Test
-	public void testGenerateAssignmentsAssignmentsNotNull() {
+	public void testGenerateAssignmentsParticipantsNotNull() {
 		final String[] assignments = assignmentGenerator.generateAssignments(participants);
 	
 		Assert.assertNotNull(assignments);	
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testGenerateAssignmentsParticipantsNull() {
+		assignmentGenerator.generateAssignments(null);
 	}
 	
 	@Test
@@ -29,7 +35,20 @@ public class SecretSantaAssignmentGeneratorTest {
 	}
 	
 	@Test
-	public void testGenerateAssignmentsAndParticipants() {
+	public void testGenerateAssignments() {
+		testGenerateAssignments(participants);
+	}
+	
+	@Test
+	public void testGenerateAssignmentsForPermutations() {
+		String[][] permutation = PermutationUtil.permutation(participants);
+		
+		for(int i = 0; i < permutation.length; i++) {
+			testGenerateAssignments(permutation[i]);
+		}
+	}
+	
+	private void testGenerateAssignments(String[] participants) {
 		final String[] assignments = assignmentGenerator.generateAssignments(participants);
 		
 		Set<String> participantSet = getParticipantsSet();
