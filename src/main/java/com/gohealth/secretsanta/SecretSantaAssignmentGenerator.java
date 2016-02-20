@@ -41,13 +41,13 @@ public class SecretSantaAssignmentGenerator {
 				max = findMax(toBeAssignedIndexes, participants.length);
 				
 				selectedParticipantIndex = random.nextInt(max - min + 1) + min;
-		
-				if(toBeAssignedIndexes.contains(selectedParticipantIndex) && (i != selectedParticipantIndex)) {
+ 				
+				if(toBeAssignedIndexes.contains(selectedParticipantIndex) && (i != selectedParticipantIndex) && (toBeAssignedIndexes.size() != 2 || ((max != i + 1) || selectedParticipantIndex == max))) {
 					assignments[i] = participants[selectedParticipantIndex];
 					toBeAssignedIndexes.remove(selectedParticipantIndex);
 					break;
 				}
-			} while((i == selectedParticipantIndex) || !toBeAssignedIndexes.contains(selectedParticipantIndex) && !toBeAssignedIndexes.isEmpty());
+			} while((i == selectedParticipantIndex) || (!toBeAssignedIndexes.contains(selectedParticipantIndex) && !toBeAssignedIndexes.isEmpty()) || (toBeAssignedIndexes.size() == 2 && (max == i + 1)) );
 		}
 		
 		return assignments;

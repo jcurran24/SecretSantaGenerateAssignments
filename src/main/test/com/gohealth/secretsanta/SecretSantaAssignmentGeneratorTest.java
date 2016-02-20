@@ -15,8 +15,6 @@ public class SecretSantaAssignmentGeneratorTest {
 	
 	@Test
 	public void testGenerateAssignmentsAssignmentsNotNull() {
-		
-		
 		final String[] assignments = assignmentGenerator.generateAssignments(participants);
 	
 		Assert.assertNotNull(assignments);	
@@ -24,8 +22,6 @@ public class SecretSantaAssignmentGeneratorTest {
 	
 	@Test
 	public void testGenerateAssignmentsAndParticipantsSameSize() {
-		
-		
 		final String[] assignments = assignmentGenerator.generateAssignments(participants);
 		
 		
@@ -34,8 +30,6 @@ public class SecretSantaAssignmentGeneratorTest {
 	
 	@Test
 	public void testGenerateAssignmentsAndParticipants() {
-		
-		
 		final String[] assignments = assignmentGenerator.generateAssignments(participants);
 		
 		Set<String> participantSet = getParticipantsSet();
