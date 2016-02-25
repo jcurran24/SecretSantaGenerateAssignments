@@ -16,9 +16,9 @@ public class SecretSantaAssignmentGeneratorImplTwo implements SecretSantaAssignm
 	    
 		String[] assignments = new String[participants.length];
 		
+		@SuppressWarnings("unchecked")
 		List<String> receiver = (List<String>)(((ArrayList<String>)donor).clone());
 
-	    //Collections.shuffle(donor);
 	    for (int i = 0; i < donor.size(); i++) {
 	        Collections.shuffle(receiver);
 	        int target = 0;
@@ -34,7 +34,6 @@ public class SecretSantaAssignmentGeneratorImplTwo implements SecretSantaAssignm
 	        	}
 	        }
 	       
-	        
 	        receiver.remove(receiver.get(target));
 	        
 	    }
