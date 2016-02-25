@@ -15,14 +15,6 @@ public class SecretSantaAssignmentGeneratorImplTest {
 	private final String[] participants = new String[] { "Kyle", "Kenny", "Eric", "Stan", "Stewie", "Brian" };
 	private final String[] oddParticipants = new String[] { "Kyle", "Kenny", "Eric", "Stan", "Stewie" };
 	
-	/*
-	public SecretSantaAssignmentGeneratorImplTest() {
-		this.assignmentGenerator = new SecretSantaAssignmentGeneratorImpl();
-	}
-	
-	public SecretSantaAssignmentGeneratorImplTest(SecretSantaAssignmentGenerator assignmentGenerator) {
-		this.assignmentGenerator = assignmentGenerator;
-	}*/
 	
 	@Test
 	public void testGenerateAssignmentsParticipantsNotNull() {
