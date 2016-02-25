@@ -56,19 +56,19 @@ public class SecretSantaAssignmentGeneratorImplTest {
 		testGenerateAssignmentsForPermutations(oddParticipants);
 	}
 	
-	private void testGenerateAssignments(String[] participants) {
-		final String[] assignments = assignmentGenerator.generateAssignments(participants);
+	private void testGenerateAssignments(String[] theParticipants) {
+		final String[] assignments = assignmentGenerator.generateAssignments(theParticipants);
 		
 		Set<String> participantSet = getParticipantsSet();
 		
-		Assert.assertTrue("The number of assignments are not equal to the number of participants", assignments.length == participants.length);
+		Assert.assertTrue("The number of assignments are not equal to the number of participants", assignments.length == theParticipants.length);
 		
 		for(int i = 0; i < assignments.length; i++) {
-			if(participantSet.contains(assignments[i]) && !participants[i].equals(assignments[i])) {
+			if(participantSet.contains(assignments[i]) && !theParticipants[i].equals(assignments[i])) {
 				participantSet.remove(assignments[i]);
 			} else {
 				Assert.assertTrue("There is at least 1 person " + assignments[i] + " assigned to 2 different participants", !participantSet.contains(assignments[i]));
-				Assert.assertTrue("A participant " + participants[i] + " was assigned to his/herself", participants[i].equals(assignments[i]));
+				Assert.assertTrue("A participant " + theParticipants[i] + " was assigned to his/herself", theParticipants[i].equals(assignments[i]));
 			}
 		}
 		
