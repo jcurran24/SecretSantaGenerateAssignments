@@ -17,49 +17,81 @@ public class SecretSantaDrawing {
 		
 		System.out.println("Welcome To the Secret Santa Drawing");
 		
-		System.out.println("Please enter the participant names separated by a comma\n");
+		System.out.println("Please enter the participant names separated by a comma.  To quit enter 'Q'.\n");
 		
 		
 		String participantNames = null;
-		try {
-			BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-		    participantNames = bufferRead.readLine();
+		String participants[] = null;
+		boolean correctInput = false;
+		
+		while(!correctInput && !"Q".equals(participantNames)) {
+			try {
+				BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+				participantNames = bufferRead.readLine();
 			
-		} catch(IllegalFormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			} catch(IllegalFormatException | IOException e) {
+				e.printStackTrace();
+			}
+		
+			if(!participantNames.contains(",")) {
+				System.out.println("\nInvalid input for participant names was entered.  List of participant "
+					+ "names is required to be comma separated.\n");
+				System.out.println("Please try again or enter 'Q' to quit.\n");
+				continue;
+			}
+		
+			participants = participantNames.split(",");
+		
+			if(participants.length < 4) {
+				System.out.println("Too few participants were entered. The minimum number of participants allowed is 4 to "
+					+ "guarantee each donor gets a valid assignment.");
+				System.out.println("Please try again or enter 'Q' to quit.\n");
+			} else {
+				correctInput = true;
+			}
 		}
 		
-		String participants[] = participantNames.split(",");
-		
-		System.out.println("\nPlease enter the algorithm number you want to use for the secret santa drawing.\n");
-		
-		
-		String algorithmNumber = null;
-		try {
-			BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-		    algorithmNumber = bufferRead.readLine();
-		} catch(IllegalFormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		String[] assignments = null;
-		
-		SecretSantaDrawing secretSantaDrawing = new SecretSantaDrawing();
-		
-		if("1".equals(algorithmNumber)) {
-			assignments = secretSantaDrawing.secretSantaAssignmentGeneratorOne.generateAssignments(participants);
-		} else if("2".equals(algorithmNumber)) {
-			assignments = secretSantaDrawing.secretSantaAssignmentGeneratorTwo.generateAssignments(participants);
-		} else {
-			System.out.println("You made an invalid selection. Please rerun this program and try again. Good bye.");
+		if("Q".equals(participantNames)) {
+			System.out.println("\nThank you for using the Secret Santa Drawing program.  Good bye.\n");
 			return;
 		}
 		
-		System.out.println("List of participants:");
+		System.out.println("\nPlease enter the algorithm number you want to use for the secret santa drawing. Enter '1' or '2' or enter 'Q' to quit.\n");
+		
+		
+		String algorithmNumber = null;
+		String[] assignments = null;
+		while(!"1".equals(algorithmNumber) && !"2".equals(algorithmNumber) && !"Q".equals(algorithmNumber)) {
+			try {
+				BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+				algorithmNumber = bufferRead.readLine();
+			} catch(IllegalFormatException | IOException e) {
+				e.printStackTrace();
+			}
+		
+			SecretSantaDrawing secretSantaDrawing = new SecretSantaDrawing();
+			
+			switch(algorithmNumber) {
+				case "1":
+					assignments = secretSantaDrawing.secretSantaAssignmentGeneratorOne.generateAssignments(participants);
+					break;
+				case "2":
+					assignments = secretSantaDrawing.secretSantaAssignmentGeneratorTwo.generateAssignments(participants);
+					break;
+				case "Q":
+					break;
+				default:
+					System.out.println("Invalid input was entered. Please try again or enter Q to exit.");
+					break;
+			}
+		}
+		
+		if("Q".equals(algorithmNumber)) {
+			System.out.println("\nThank you for using the Secret Santa Drawing program.  Good bye.\n");
+			return;
+		}
+		
+		System.out.println("\nList of participants:");
 		
 		int count = 0;
 		String participantsList = "";
@@ -72,7 +104,7 @@ public class SecretSantaDrawing {
 		}
 		System.out.println(participantsList);
 		
-		System.out.println("List of assignments:");
+		System.out.println("\nList of assignments:");
 		
 		count = 0;
 		String assignmentsList = "";
@@ -85,7 +117,7 @@ public class SecretSantaDrawing {
 		}
 		System.out.println(assignmentsList);
 		
-		System.out.println("\nThank you for using the Secret Santa Drawing program.  Good bye.");
+		System.out.println("\nThank you for using the Secret Santa Drawing program.  Good bye.\n");
 	}
 	
 }
