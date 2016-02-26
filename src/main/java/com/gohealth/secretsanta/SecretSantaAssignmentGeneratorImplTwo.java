@@ -4,9 +4,25 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * SecretSantaAssignmentsGeneratorImplTwo
+ * - An implementation of an interface for generation of assignments, in a secret santa drawing,
+ *   per a list of participants.
+ *   
+ * @author jeremycurran
+ *
+ */
 public class SecretSantaAssignmentGeneratorImplTwo implements SecretSantaAssignmentGenerator {
 
-	@Override
+	/**
+	 * - generateAssignments
+	 *   - Generates an array of assignments mapped to each donor in the array of participants
+	 *     by array index.  Each assignment is unique and each donor is assigned a participant
+	 *     that is not themself.
+	 * @param participants list of individuals participating in the draw.
+	 * @return the list of individuals paired with the participants where participants[0]
+	 * is matched with assignments[0], participants[1] is matched with assignments[1], and so on.
+	 */
 	public String[] generateAssignments(String[] participants) {
 		if(participants == null) {
 			throw new IllegalArgumentException("Particpants array was null");
