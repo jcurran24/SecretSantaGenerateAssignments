@@ -15,6 +15,7 @@ Instructions and Requirements for running tests.
 mvn compile
 
 4. Run all Unit tests with the following command
+
 mvn test 
 
 or run each individually with the following commands
