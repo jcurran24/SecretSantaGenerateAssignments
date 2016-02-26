@@ -2,14 +2,14 @@ Secret Santa Assignment Generator Drawing Program README File
 
 Summary:
 
-Provides 2 different implementations of algorithms that take in a array of Strings containing names of people in a secret santa drawing and assigns each donor to a different unique receiver.
+Provides 2 different implementations of algorithms that take in an array of Strings containing names of people in a secret santa drawing and assigns each donor to a different unique receiver.
 
 Also provides Unit Tests and a program demonstrating that the algorithms function properly.
 
 Instructions and Requirements for running tests.
 
 1. Maven will need to be installed and your MAVEN_HOME and PATH variable will need to be setup on your system.
-2. Change to the directoty of the SecretSantaGenerateAssignments.
+2. Change to the directory of the SecretSantaGenerateAssignments.
 3. Compile the code with the following command
 
 mvn compile
