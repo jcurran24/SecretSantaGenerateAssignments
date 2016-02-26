@@ -10,9 +10,9 @@ Instructions and Requirements for running tests.
 
 1. Maven will need to be installed and your MAVEN_HOME and PATH variable will need to be setup on your system.
 2. Change to the directory of the SecretSantaGenerateAssignments.
-3. Compile the code with the following command
+3. Compile the code with the following command: 
 
-mvn compile
+mvn compile.
 
 4. Run all Unit tests with the following command
 
@@ -24,12 +24,12 @@ mvn test -Dtest=SecretSantaAssignmentGeneratorImplTest
 
 or 
 
-mvn test -Dtest=SecretSantaAssignmentGeneratorImplTwoTest
+mvn test -Dtest=SecretSantaAssignmentGeneratorImplTwoTest.
 
 
 Instructions for running the Secret Santa drawing program:
 
-1. Start the program with the following maven command from the command line at the root of the SecretSantaGenerateAssignments project directory
+1. Start the program with the following maven command from the command line at the root of the SecretSantaGenerateAssignments project directory.
 
 mvn exec:java -Dexec.mainClass="com.gohealth.secretsanta.main.SecretSantaDrawing"
 
